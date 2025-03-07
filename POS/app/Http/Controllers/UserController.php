@@ -8,6 +8,6 @@ class UserController extends Controller
 {
     public function profile($id, $name)
     {
-        return view('user.profile', ['id' => $id, 'name' => $name]);
+        return view('user.profile', ['01' => $id, 'Diaz' => $name]);
     }
 }
