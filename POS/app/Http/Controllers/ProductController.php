@@ -8,7 +8,7 @@ class ProductController extends Controller
 {
     public function foodBeverage()
     {
-        return view('products.food-beverage');
+        return view('food_beverage');
     }
 
     public function beautyHealth()
