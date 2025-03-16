@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jumlah User</title>
+    <title>Data User</title>
     <style>
         table {
-            width: 50%;
+            width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
         }
         th, td {
             border: 1px solid black;
             padding: 8px;
-            text-align: center;
+            text-align: left;
         }
         th {
             background-color: #f2f2f2;
@@ -22,23 +22,31 @@
 </head>
 <body>
 
-    <h1>Jumlah User dengan Level ID 2</h1>
+    <h1>Data User</h1>
 
     <table>
         <thead>
             <tr>
-                <th>No</th>
-                <th>Keterangan</th>
-                <th>Jumlah</th>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Nama</th>
+                <th>ID Level Pengguna</th>
             </tr>
         </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>Total User dengan Level ID 2</td>
-                <td><strong>{{ $data }}</strong></td>
-            </tr>
-        </tbody>
+<tbody>
+    @if ($data)
+        <tr>
+            <td>{{ $data->user_id }}</td>
+            <td>{{ $data->username }}</td>
+            <td>{{ $data->nama }}</td>
+            <td>{{ $data->level_id }}</td>
+        </tr>
+    @else
+        <tr>
+            <td colspan="4" style="text-align: center;">Data tidak ditemukan</td>
+        </tr>
+    @endif
+</tbody>
     </table>
 
 </body>
