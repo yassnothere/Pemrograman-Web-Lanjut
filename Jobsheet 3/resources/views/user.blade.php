@@ -34,14 +34,18 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($data as $d)
-            <tr>
-                <td>{{ $d->user_id }}</td>
-                <td>{{ $d->username }}</td>
-                <td>{{ $d->nama }}</td>
-                <td>{{ $d->level_id }}</td>
-            </tr>
-            @endforeach
+            @if ($data)
+                <tr>
+                    <td>{{ $data->user_id }}</td>
+                    <td>{{ $data->username }}</td>
+                    <td>{{ $data->nama }}</td>
+                    <td>{{ $data->level_id }}</td>
+                </tr>
+            @else
+                <tr>
+                    <td colspan="4" style="text-align: center;">Data tidak ditemukan</td>
+                </tr>
+            @endif
         </tbody>
     </table>
 
