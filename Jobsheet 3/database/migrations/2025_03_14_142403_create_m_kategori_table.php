@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('m_kategori', function (Blueprint $table) {
-            $table->id();
+            $table->id('kategori_id'); // Pastikan nama ID yang konsisten
+            $table->string('kategori_kode', 10)->unique(); // Tambahkan kategori_kode
             $table->string('nama_kategori', 50);
             $table->timestamps();
         });
