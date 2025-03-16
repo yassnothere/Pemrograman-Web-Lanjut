@@ -21,33 +21,33 @@
     </style>
 </head>
 <body>
-
     <h1>Data User</h1>
+    <a href="{{ url('/user/tambah') }}">+ Tambah User</a>
 
-    <table>
+    <table border="1" cellpadding="2" cellspacing="0">
         <thead>
             <tr>
                 <th>ID</th>
                 <th>Username</th>
                 <th>Nama</th>
                 <th>ID Level Pengguna</th>
+                <th>Aksi</th>
             </tr>
         </thead>
-<tbody>
-    @if ($data)
-        <tr>
-            <td>{{ $data->user_id }}</td>
-            <td>{{ $data->username }}</td>
-            <td>{{ $data->nama }}</td>
-            <td>{{ $data->level_id }}</td>
-        </tr>
-    @else
-        <tr>
-            <td colspan="4" style="text-align: center;">Data tidak ditemukan</td>
-        </tr>
-    @endif
-</tbody>
+        <tbody>
+            @foreach ($data as $d)
+                <tr>
+                    <td>{{ $d->user_id }}</td>
+                    <td>{{ $d->username }}</td>
+                    <td>{{ $d->nama }}</td>
+                    <td>{{ $d->level_id }}</td>
+                    <td>
+                        <a href="{{ url('/user/ubah/'.$d->user_id) }}">Ubah</a> | 
+                        <a href="{{ url('/user/hapus/'.$d->user_id) }}" onclick="return confirm('Yakin ingin menghapus?')">Hapus</a>
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
     </table>
-
 </body>
 </html>
