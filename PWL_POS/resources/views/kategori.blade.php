@@ -1,51 +1,27 @@
 <!DOCTYPE html>
-<html lang="id">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Kategori</title>
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        th, td {
-            border: 1px solid black;
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
+    <title>Data Kategori Barang</title>
 </head>
+
 <body>
+    <h1>Data Kategori Barang</h1>
+    <table border="1" cellpadding="2" cellspacing="0">
+        <tr>
 
-    <h2>Data Kategori</h2>
-
-    <table>
-        <thead>
+            <th>ID</th>
+            <th>Kode Kategori</th>
+            <th>Nama Kategori</th>
+        </tr>
+        @foreach ($data as $d)
             <tr>
-                <th>Kategori ID</th>
-                <th>Kategori Kode</th>
-                <th>Nama Kategori</th>
-                <th>Created At</th>
-                <th>Updated At</th>
+                <td>{{ $d->kategori_id }}</td>
+                <td>{{ $d->kategori_kode }}</td>
+                <td>{{ $d->kategori_nama }}</td>
             </tr>
-        </thead>
-        <tbody>
-            @foreach ($kategori as $k)
-            <tr>
-                <td>{{ $k->kategori_id }}</td>
-                <td>{{ $k->kategori_kode }}</td>
-                <td>{{ $k->nama_kategori }}</td>
-                <td>{{ $k->created_at ?? 'NULL' }}</td>
-                <td>{{ $k->updated_at ?? 'NULL' }}</td>
-            </tr>
-            @endforeach
-        </tbody>
+        @endforeach
     </table>
-
 </body>
+
 </html>
