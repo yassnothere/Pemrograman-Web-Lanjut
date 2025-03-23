@@ -35,7 +35,7 @@
                     </tr>
                     <tr>
                         <th>Kategori</th>
-                        <td>{{ $barang->kategori->kategori_nama }}</td>
+                        <td>{{ $barang->kategori->nama_kategori }}</td>
                     </tr>
                 </table>
             @endempty

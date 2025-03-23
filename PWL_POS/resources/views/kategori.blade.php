@@ -18,7 +18,7 @@
             <tr>
                 <td>{{ $d->kategori_id }}</td>
                 <td>{{ $d->kategori_kode }}</td>
-                <td>{{ $d->kategori_nama }}</td>
+                <td>{{ $d->nama_kategori }}</td>
             </tr>
         @endforeach
     </table>

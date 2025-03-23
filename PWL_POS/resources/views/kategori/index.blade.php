@@ -56,7 +56,7 @@
                     orderable: true,
                     searchable: true
                 }, {
-                    data: "kategori_nama",
+                    data: "nama_kategori",
                     className: "",
                     orderable: true,
                     searchable: true
