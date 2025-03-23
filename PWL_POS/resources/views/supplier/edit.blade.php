@@ -13,40 +13,32 @@
                 </div>
                 <a href="{{ url('supplier') }}" class="btn btn-sm btn-default mt-2">Kembali</a>
             @else
-                <form method="POST" action="{{ url('/supplier/' . $supplier->supplier_id) }}" class="form-horizontal">
+            <form method="POST" action="{{ url('supplier/' . $supplier->id) }}" class="form-horizontal">
                     @csrf
                     {!! method_field('PUT') !!}
-                    <div class="form-group row">
-                        <label class="col-1 control-label col-form-label">supplier kode</label>
-                        <div class="col-11">
-                            <input type="text" class="form-control" id="supplier_kode" name="supplier_kode"
-                                value="{{ old('supplier_kode', $supplier->supplier_kode) }}" required>
 
-                            @error('supplier_kode')
-                                <small class="form-text text-danger">{{ $message }}</small>
-                            @enderror
-                        </div>
-                    </div>
                     <div class="form-group row">
-                        <label class="col-1 control-label col-form-label">supplier nama</label>
+                        <label class="col-1 control-label col-form-label">Nama Supplier</label>
                         <div class="col-11">
-                            <input type="text" class="form-control" id="supplier_nama" name="supplier_nama"
-                                value="{{ old('supplier_nama', $supplier->supplier_nama) }}" required>
-                            @error('supplier_nama')
+                            <input type="text" class="form-control" id="nama_supplier" name="nama_supplier"
+                                value="{{ old('nama_supplier', $supplier->nama_supplier) }}" required>
+                            @error('nama_supplier')
                                 <small class="form-text text-danger">{{ $message }}</small>
                             @enderror
                         </div>
                     </div>
+
                     <div class="form-group row">
-                        <label class="col-1 control-label col-form-label">supplier alamat</label>
+                        <label class="col-1 control-label col-form-label">Kontak</label>
                         <div class="col-11">
-                            <input type="text" class="form-control" id="supplier_alamat" name="supplier_alamat"
-                                value="{{ old('supplier_alamat', $supplier->supplier_alamat) }}" required>
-                            @error('supplier_alamat')
+                            <input type="text" class="form-control" id="kontak" name="kontak"
+                                value="{{ old('kontak', $supplier->kontak) }}" required>
+                            @error('kontak')
                                 <small class="form-text text-danger">{{ $message }}</small>
                             @enderror
                         </div>
                     </div>
+
                     <div class="form-group row">
                         <label class="col-1 control-label col-form-label"></label>
                         <div class="col-11">

@@ -19,9 +19,8 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Supplier Code</th>
-                        <th>Supplier Nama</th>
-                        <th>Supplier Alamat</th>
+                        <th>Kontak</th>
+                        <th>Nama Supplier</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -49,17 +48,12 @@
                     orderable: false,
                     searchable: false
                 }, {
-                    data: "supplier_kode",
+                    data: "kontak",
                     className: "",
                     orderable: true,
                     searchable: true
                 }, {
-                    data: "supplier_nama",
-                    className: "",
-                    orderable: true,
-                    searchable: true
-                }, {
-                    data: "supplier_alamat",
+                    data: "nama_supplier",
                     className: "",
                     orderable: true,
                     searchable: true

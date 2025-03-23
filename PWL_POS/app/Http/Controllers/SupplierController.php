@@ -26,14 +26,14 @@ class SupplierController extends Controller
 
     public function list()
     {
-        $suppliers = SupplierModel::select('supplier_id', 'supplier_kode', 'supplier_nama', 'supplier_alamat');
+        $suppliers = SupplierModel::select('id', 'nama_supplier', 'kontak');
 
         return DataTables::of($suppliers)
             ->addIndexColumn() 
             ->addColumn('aksi', function ($supplier) {
                 // Menambahkan kolom aksi
-                $btn  = '<a href="' . url('/supplier/' . $supplier->supplier_id) . '" class="btn btn-info btn-sm">Detail</a> ';
-                $btn .= '<a href="' . url('/supplier/' . $supplier->supplier_id . '/edit') . '" class="btn btn-warning btn-sm">Edit</a> ';
+                $btn  = '<a href="' . url('/supplier/' . $supplier->id) . '" class="btn btn-info btn-sm">Detail</a> ';
+                $btn .= '<a href="' . url('/supplier/' . $supplier->id . '/edit') . '" class="btn btn-warning btn-sm">Edit</a> ';
                 $btn .= '<form class="d-inline-block" method="POST" action="' . url('/supplier/' . $supplier->supplier_id) . '">'
                     . csrf_field()
                     . method_field('DELETE')
@@ -68,17 +68,14 @@ class SupplierController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'supplier_kode' => 'required|string|min:3|unique:m_supplier,supplier_kode',
-            'supplier_nama' => 'required|string|max: 100', 
-            'supplier_alamat' => 'required|string|max: 100', 
+            'nama_supplier' => 'required|string|max:100',
+            'kontak' => 'required|string|max:15',
         ]);
-
+        
         SupplierModel::create([
-            'supplier_kode' => $request->supplier_kode,
-            'supplier_nama' => $request->supplier_nama,
-            'supplier_alamat' => $request->supplier_alamat,
-
-        ]);
+            'nama_supplier' => $request->nama_supplier,
+            'kontak' => $request->kontak,
+        ]);        
 
         return redirect('/supplier')->with('success', 'Data level berhasil disimpan');
     }
@@ -123,15 +120,13 @@ class SupplierController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'supplier_kode' => 'required|string|min:3|unique:m_supplier,supplier_kode,' . $id . ',supplier_id',
-            'supplier_nama' => 'required|string|max: 100', 
-            'supplier_alamat' => 'required|string|max: 100', 
+            'nama_supplier' => 'required|string|max:100',
+            'kontak' => 'required|string|max:15',
         ]);
-
+        
         SupplierModel::find($id)->update([
-            'supplier_kode' => $request->supplier_kode,
-            'supplier_nama' => $request->supplier_nama,
-            'supplier_alamat' => $request->supplier_alamat,
+            'nama_supplier' => $request->nama_supplier,
+            'kontak' => $request->kontak,
         ]);
 
         return redirect('/supplier')->with('success', 'Data Supplier berhasil diubah');
