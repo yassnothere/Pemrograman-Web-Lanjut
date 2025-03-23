@@ -19,9 +19,9 @@ class SupplierController extends Controller
             'title' => 'Daftar Supplier yang terdaftar dalam sistem'
         ];
 
-        $acticeMenu = 'supplier';
+        $activeMenu = 'supplier';
 
-        return view('supplier.index', ['breadcrumb' => $breadcrumb, 'page' => $page, 'activeMenu' => $acticeMenu]);
+        return view('supplier.index', ['breadcrumb' => $breadcrumb, 'page' => $page, 'activeMenu' => $activeMenu]);
     }
 
     public function list()

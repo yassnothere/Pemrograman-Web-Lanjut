@@ -19,9 +19,9 @@ class KategoriController extends Controller
             'title' => 'Daftar kategori yang terdaftar dalam sistem'
         ];
 
-        $acticeMenu = 'kategori';
+        $activeMenu = 'kategori';
 
-        return view('kategori.index', ['breadcrumb' => $breadcrumb, 'page' => $page, 'activeMenu' => $acticeMenu]);
+        return view('kategori.index', ['breadcrumb' => $breadcrumb, 'page' => $page, 'activeMenu' => $activeMenu]);
     }
 
     public function list()

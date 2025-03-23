@@ -21,11 +21,11 @@ class BarangController extends Controller
             'title' => 'Daftar barang yang terdaftar dalam sistem'
         ];
 
-        $acticeMenu = 'barang';
+        $activeMenu = 'barang';
 
         $kategori = KategoriModel::all();
 
-        return view('barang.index', ['breadcrumb' => $breadcrumb, 'page' => $page, 'kategori' => $kategori, 'activeMenu' => $acticeMenu]);
+        return view('barang.index', ['breadcrumb' => $breadcrumb, 'page' => $page, 'kategori' => $kategori, 'activeMenu' => $activeMenu]);
     }
 
     public function list(Request $request)

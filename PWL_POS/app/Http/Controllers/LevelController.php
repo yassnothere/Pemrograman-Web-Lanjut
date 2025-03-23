@@ -20,9 +20,9 @@ class LevelController extends Controller
             'title' => 'Daftar Level yang terdaftar dalam sistem'
         ];
 
-        $acticeMenu = 'level';
+        $activeMenu = 'level';
 
-        return view('level.index', ['breadcrumb' => $breadcrumb, 'page' => $page, 'activeMenu' => $acticeMenu]);
+        return view('level.index', ['breadcrumb' => $breadcrumb, 'page' => $page, 'activeMenu' => $activeMenu]);
     }
 
     public function list()

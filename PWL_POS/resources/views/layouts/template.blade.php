@@ -19,6 +19,8 @@
     <link rel="stylesheet" href="{{ asset('adminlte/plugins/fontawesome-free/css/all.min.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('adminlte/dist/css/adminlte.min.css') }}">
+    <!--Sweet ALert2 -->
+    <link rel="stylesheet" href="{{ asset('plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">
 
     @stack('css')
 </head>
@@ -85,6 +87,13 @@
     <script src="{{ asset('adminlte/plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
     <script src="{{ asset('adminlte/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
     <script src="{{ asset('adminlte/plugins/datatables-buttons/is/buttons.colVis.min.js') }}"></script>
+
+    <!-- Jquery-validation -->
+    <script src="{{ asset('plugins/jquery-validation/jquery.validate.min.js')}}"></script>
+    <script src="{{ asset('plugins/jquery-validation/additional-methods.min.js')}}"></script>
+
+    <!-- SweetAlert2-->
+    <script src="{{ asset('plugins/sweetalert2/sweetalert2.min.js')}}"></script>
 
     <script>
         $.ajaxSetup({
