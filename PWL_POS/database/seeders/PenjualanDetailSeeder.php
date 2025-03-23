@@ -13,15 +13,13 @@ class PenjualanDetailSeeder extends Seeder
      */
     public function run(): void
     {
-        for ($i = 1; $i <= 10; $i++) {
-            for ($j = 1; $j <= 3; $j++) {
-                DB::table('t_penjualan_detail')->insert([
-                    'penjualan_id' => $i,
-                    'id' => rand(1, 15),
-                    'jumlah' => rand(1, 5),
-                    'harga' => rand(10000, 500000),
-                ]);
-            }
-        }
+        $data = [
+            ["detail_id" => 1, "penjualan_id" => 1, "barang_id" => 1, "harga" => 7000000, "jumlah" => 1, "created_at" => "2025-03-09 10:32:54", "updated_at" => NULL],
+            ["detail_id" => 2, "penjualan_id" => 1, "barang_id" => 2, "harga" => 4500000, "jumlah" => 1, "created_at" => "2025-03-09 10:32:54", "updated_at" => NULL],
+            ["detail_id" => 3, "penjualan_id" => 2, "barang_id" => 6, "harga" => 150000, "jumlah" => 2, "created_at" => "2025-03-09 10:32:54", "updated_at" => NULL],
+            ["detail_id" => 4, "penjualan_id" => 3, "barang_id" => 3, "harga" => 300000, "jumlah" => 1, "created_at" => "2025-03-09 10:32:54", "updated_at" => NULL]
+        ];
+        DB::table('t_penjualan_detail')->insert($data);
+         
     }
 }

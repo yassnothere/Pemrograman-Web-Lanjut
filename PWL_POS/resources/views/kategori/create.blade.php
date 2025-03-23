@@ -21,9 +21,9 @@
                 <div class="form-group row">
                     <label class="col-1 control-label col-form-label">kategori Nama</label>
                     <div class="col-11">
-                        <input type="text" class="form-control" id="nama_kategori" name="nama_kategori" value="{{ old('nama_kategori') }}"
+                        <input type="text" class="form-control" id="kategori_nama" name="kategori_nama" value="{{ old('kategori_nama') }}"
                             required>
-                        @error('nama_kategori')
+                        @error('kategori_nama')
                             <small class="form-text text-danger">{{ $message }}</small>
                         @enderror
                     </div>

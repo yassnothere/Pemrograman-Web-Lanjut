@@ -6,7 +6,7 @@
             <div class="card-tools"></div>
         </div>
         <div class="card-body">
-            @if(!$barang)
+            @empty($barang)
                 <div class="alert alert-danger alert-dismissible">
                     <h5><i class="icon fas fa-ban"></i> Kesalahan!</h5>
                     Data yang Anda cari tidak ditemukan.
@@ -15,29 +15,35 @@
                 <table class="table table-bordered table-striped table-hover table-sm">
                     <tr>
                         <th>ID</th>
-                        <td>{{ $barang->id }}</td>
+                        <td>{{ $barang->barang_id }}</td>
                     </tr>
                     <tr>
-                        <th>Nama Barang</th>
-                        <td>{{ $barang->nama_barang }}</td>
+                        <th>Barang Kode</th>
+                        <td>{{ $barang->barang_kode }}</td>
                     </tr>
                     <tr>
-                        <th>Harga</th>
-                        <td>Rp {{ number_format($barang->harga, 0, ',', '.') }}</td>
+                        <th>Barang Nama</th>
+                        <td>{{ $barang->barang_nama }}</td>
+                    </tr>
+                    <tr>
+                        <th>Harga Jual</th>
+                        <td>{{ $barang->harga_jual }}</td>
+                    </tr>
+                    <tr>
+                        <th>Harga Beli</th>
+                        <td>{{ $barang->harga_beli }}</td>
                     </tr>
                     <tr>
                         <th>Kategori</th>
-                        <td>{{ $barang->kategori->nama_kategori ?? 'Tidak ada kategori' }}</td>
+                        <td>{{ $barang->kategori->kategori_nama }}</td>
                     </tr>
                 </table>
-            @endif
+            @endempty
             <a href="{{ url('barang') }}" class="btn btn-sm btn-default mt-2">Kembali</a>
         </div>
     </div>
 @endsection
-
 @push('css')
 @endpush
-
 @push('js')
 @endpush

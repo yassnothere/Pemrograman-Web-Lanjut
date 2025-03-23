@@ -23,7 +23,7 @@
                     </tr>
                     <tr>
                         <th>kategori Nama</th>
-                        <td>{{ $kategori->nama_kategori }}</td>
+                        <td>{{ $kategori->kategori_nama }}</td>
                     </tr>
                 </table>
             @endempty

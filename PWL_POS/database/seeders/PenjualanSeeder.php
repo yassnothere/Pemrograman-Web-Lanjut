@@ -13,11 +13,11 @@ class PenjualanSeeder extends Seeder
      */
     public function run(): void
     {
-        for ($i = 1; $i <= 10; $i++) {
-            DB::table('t_penjualan')->insert([
-                'tanggal' => now(),
-                'total_harga' => rand(100000, 500000),
-            ]);
-        }
+        $data = [
+            ["penjualan_id" => 1, "user_id" => 1, "pembeli" => "Andi", "penjualan_kode" => "TRX001", "penjualan_tanggal" => "2025-03-09 17:32:54", "created_at" => "2025-03-09 10:32:54", "updated_at" => NULL],
+            ["penjualan_id" => 2, "user_id" => 2, "pembeli" => "Budi", "penjualan_kode" => "TRX002", "penjualan_tanggal" => "2025-03-09 17:32:54", "created_at" => "2025-03-09 10:32:54", "updated_at" => NULL],
+            ["penjualan_id" => 3, "user_id" => 3, "pembeli" => "Citra", "penjualan_kode" => "TRX003", "penjualan_tanggal" => "2025-03-09 17:32:54", "created_at" => "2025-03-09 10:32:54", "updated_at" => NULL]
+        ];
+        DB::table('t_penjualan')->insert($data);  
     }
 }

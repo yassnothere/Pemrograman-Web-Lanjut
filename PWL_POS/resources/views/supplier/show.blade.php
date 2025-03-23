@@ -15,15 +15,19 @@
                 <table class="table table-bordered table-striped table-hover table-sm">
                     <tr>
                         <th>ID</th>
-                        <td>{{ $supplier->id }}</td>
+                        <td>{{ $supplier->supplier_id }}</td>
                     </tr>
                     <tr>
-                        <th>Nama Supplier</th>
-                        <td>{{ $supplier->nama_supplier }}</td>
+                        <th>Supplier Kode</th>
+                        <td>{{ $supplier->supplier_kode }}</td>
                     </tr>
                     <tr>
-                        <th>Kontak</th>
-                        <td>{{ $supplier->kontak }}</td>
+                        <th>Supplier Nama</th>
+                        <td>{{ $supplier->supplier_nama }}</td>
+                    </tr>
+                    <tr>
+                        <th>Supplier Alamat</th>
+                        <td>{{ $supplier->supplier_alamat }}</td>
                     </tr>
                 </table>
             @endempty

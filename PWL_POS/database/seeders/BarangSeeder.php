@@ -14,25 +14,13 @@ class BarangSeeder extends Seeder
     public function run(): void
     {
         $data = [
-            ['nama_barang' => 'Laptop', 'supplier_id' => 1, 'kategori_id' => 1, 'harga' => 8000000],
-            ['nama_barang' => 'Mouse', 'supplier_id' => 1, 'kategori_id' => 1, 'harga' => 200000],
-            ['nama_barang' => 'Keyboard', 'supplier_id' => 1, 'kategori_id' => 1, 'harga' => 300000],
-            ['nama_barang' => 'Monitor', 'supplier_id' => 1, 'kategori_id' => 1, 'harga' => 2000000],
-            ['nama_barang' => 'Printer', 'supplier_id' => 1, 'kategori_id' => 1, 'harga' => 1500000],
-
-            ['nama_barang' => 'Baju Kaos', 'supplier_id' => 2, 'kategori_id' => 2, 'harga' => 100000],
-            ['nama_barang' => 'Celana Jeans', 'supplier_id' => 2, 'kategori_id' => 2, 'harga' => 250000],
-            ['nama_barang' => 'Jaket', 'supplier_id' => 2, 'kategori_id' => 2, 'harga' => 300000],
-            ['nama_barang' => 'Sepatu', 'supplier_id' => 2, 'kategori_id' => 2, 'harga' => 400000],
-            ['nama_barang' => 'Topi', 'supplier_id' => 2, 'kategori_id' => 2, 'harga' => 50000],
-
-            ['nama_barang' => 'Roti', 'supplier_id' => 3, 'kategori_id' => 3, 'harga' => 20000],
-            ['nama_barang' => 'Susu', 'supplier_id' => 3, 'kategori_id' => 3, 'harga' => 15000],
-            ['nama_barang' => 'Kopi', 'supplier_id' => 3, 'kategori_id' => 3, 'harga' => 10000],
-            ['nama_barang' => 'Teh', 'supplier_id' => 3, 'kategori_id' => 3, 'harga' => 8000],
-            ['nama_barang' => 'Gula', 'supplier_id' => 3, 'kategori_id' => 3, 'harga' => 12000],
+            ["barang_id" => 1, "kategori_id" => 1, "barang_kode" => "BRG001", "barang_nama" => "Laptop", "harga_beli" => "5000000", "harga_jual" => "7000000", "created_at" => "2025-03-09 10:32:54", "updated_at" => NULL],
+            ["barang_id" => 2, "kategori_id" => 1, "barang_kode" => "BRG002", "barang_nama" => "Smartphone", "harga_beli" => "3000000", "harga_jual" => "4500000", "created_at" => "2025-03-09 10:32:54", "updated_at" => NULL],
+            ["barang_id" => 3, "kategori_id" => 2, "barang_kode" => "BRG006", "barang_nama" => "Kemeja", "harga_beli" => "100000", "harga_jual" => "150000", "created_at" => "2025-03-09 10:32:54", "updated_at" => NULL],
+            ["barang_id" => 4, "kategori_id" => 2, "barang_kode" => "BRG007", "barang_nama" => "Celana Jeans", "harga_beli" => "200000", "harga_jual" => "300000", "created_at" => "2025-03-09 10:32:54", "updated_at" => NULL],
+            ["barang_id" => 5, "kategori_id" => 3, "barang_kode" => "BRG011", "barang_nama" => "Pensil", "harga_beli" => "2000", "harga_jual" => "5000", "created_at" => "2025-03-09 10:32:54", "updated_at" => NULL],
+            ["barang_id" => 6, "kategori_id" => 3, "barang_kode" => "BRG012", "barang_nama" => "Buku Tulis", "harga_beli" => "5000", "harga_jual" => "10000", "created_at" => "2025-03-09 10:32:54", "updated_at" => NULL]
         ];
         DB::table('m_barang')->insert($data);
-
     }
 }
