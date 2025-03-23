@@ -19,10 +19,10 @@
                     <div class="form-group row">
                         <label class="col-1 control-label col-form-label">Level Code</label>
                         <div class="col-11">
-                            <input type="text" class="form-control" id="level_code" name="level_code"
-                                value="{{ old('level_code', $level->level_code) }}" required>
+                            <input type="text" class="form-control" id="level_kode" name="level_kode"
+                                value="{{ old('level_kode', $level->level_kode) }}" required>
 
-                            @error('level_code')
+                            @error('level_kode')
                                 <small class="form-text text-danger">{{ $message }}</small>
                             @enderror
                         </div>

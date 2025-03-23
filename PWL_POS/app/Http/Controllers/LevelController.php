@@ -28,7 +28,7 @@ class LevelController extends Controller
 
     public function list()
     {
-        $levels = LevelModel::select('level_id', 'level_code', 'level_nama');
+        $levels = LevelModel::select('level_id', 'level_kode', 'level_nama');
 
         return DataTables::of($levels)
             ->addIndexColumn()
@@ -81,7 +81,7 @@ class LevelController extends Controller
         // cek apakah request berupa ajax
         if ($request->ajax() || $request->wantsJson()) {
             $rules = [
-                'level_code' => 'required|string|min:3|unique:m_level,level_code',
+                'level_kode' => 'required|string|min:3|unique:m_level,level_kode',
                 'level_nama' => 'required|string|max:100',
             ];
 
@@ -107,12 +107,12 @@ class LevelController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'level_code' => 'required|string|min:3|unique:m_level,level_code',
+            'level_kode' => 'required|string|min:3|unique:m_level,level_kode',
             'level_nama' => 'required|string|max: 100', 
         ]);
 
         LevelModel::create([
-            'level_code' => $request->level_code,
+            'level_kode' => $request->level_kode,
             'level_nama' => $request->level_nama,
 
         ]);
@@ -174,12 +174,12 @@ class LevelController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'level_code' => 'required|string|max:100|unique:m_level,level_code,' . $id . ',level_id',
+            'level_kode' => 'required|string|max:100|unique:m_level,level_kode,' . $id . ',level_id',
             'level_nama' => 'required|string|max:100',
         ]);
 
         LevelModel::find($id)->update([
-            'level_code' => $request->level_code,
+            'level_kode' => $request->level_kode,
             'level_nama' => $request->level_nama,
         ]);
 
@@ -191,7 +191,7 @@ class LevelController extends Controller
         // cek apakah request dari ajax
         if ($request->ajax() || $request->wantsJson()) {
             $rules = [
-                'level_code' => 'required|max:20|unique:m_level,level_code,' . $id . ',level_id',
+                'level_kode' => 'required|max:20|unique:m_level,level_kode,' . $id . ',level_id',
                 'level_nama' => 'required|max:100',
             ];
             // use Illuminate\Support\Facades\Validator;
