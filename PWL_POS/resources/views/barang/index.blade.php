@@ -75,7 +75,7 @@
                     orderable: true,
                     searchable: true
                 }, {
-                    data: "barang_nama",
+                    data: "nama_barang",
                     className: "",
                     orderable: true,
                     searchable: true

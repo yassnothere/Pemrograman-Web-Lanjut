@@ -15,7 +15,7 @@ class StokSeeder extends Seeder
     {
         for ($i = 1; $i <= 15; $i++) {
             DB::table('t_stok')->insert([
-                'barang_id' => $i,
+                'id' => $i,
                 'jumlah' => rand(10, 100),
             ]);
         }

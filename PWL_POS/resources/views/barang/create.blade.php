@@ -35,9 +35,9 @@
                 <div class="form-group row">
                     <label class="col-1 control-label col-form-label">Barang Nama</label>
                     <div class="col-11">
-                        <input type="text" class="form-control" id="barang_nama" name="barang_nama"
-                            value="{{ old('barang_nama') }}" required>
-                        @error('barang_nama')
+                        <input type="text" class="form-control" id="nama_barang" name="nama_barang"
+                            value="{{ old('nama_barang') }}" required>
+                        @error('nama_barang')
                             <small class="form-text text-danger">{{ $message }}</small>
                         @enderror
                     </div>

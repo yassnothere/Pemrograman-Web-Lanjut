@@ -11,17 +11,22 @@ class BarangModel extends Model
     use HasFactory;
 
     protected $table = 'm_barang';
-    protected $primaryKey = 'barang_id';
+    protected $primaryKey = 'id'; // Sesuai dengan database
+
+    public $timestamps = true; // Mengaktifkan timestamps
 
     protected $fillable = [
-        'barang_kode',
-        'barang_nama',
-        'harga_beli',
-        'harga_jual',
-        'kategori_id'
+        'nama_barang', // Sesuai dengan database
+        'kategori_id',
+        'supplier_id',
+        'harga' // Menggunakan satu kolom harga
     ];
 
     public function kategori(): BelongsTo {
-        return $this->belongsTo(KategoriModel::class, 'kategori_id', 'kategori_id');
+        return $this->belongsTo(KategoriModel::class, 'kategori_id', 'id');
+    }
+
+    public function supplier(): BelongsTo {
+        return $this->belongsTo(SupplierModel::class, 'supplier_id', 'id');
     }
 }

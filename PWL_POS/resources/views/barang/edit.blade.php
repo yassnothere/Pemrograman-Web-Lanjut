@@ -13,7 +13,7 @@
                 </div>
                 <a href="{{ url('barang') }}" class="btn btn-sm btn-default mt-2">Kembali</a>
             @else
-                <form method="POST" action="{{ url('/barang/' . $barang->barang_id) }}" class="form-horizontal">
+                <form method="POST" action="{{ url('/barang/' . $barang->id) }}" class="form-horizontal">
                     @csrf
                     {!! method_field('PUT') !!}
                     <div class="form-group row">
@@ -44,9 +44,9 @@
                     <div class="form-group row">
                         <label class="col-1 control-label col-form-label">Barang Nama</label>
                         <div class="col-11">
-                            <input type="text" class="form-control" id="barang_nama" name="barang_nama"
-                                value="{{ old('barang_nama', $barang->barang_nama) }}" required>
-                            @error('barang_nama')
+                            <input type="text" class="form-control" id="nama_barang" name="nama_barang"
+                                value="{{ old('nama_barang', $barang->nama_barang) }}" required>
+                            @error('nama_barang')
                                 <small class="form-text text-danger">{{ $message }}</small>
                             @enderror
                         </div>

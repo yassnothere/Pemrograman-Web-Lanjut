@@ -15,7 +15,7 @@
                 <table class="table table-bordered table-striped table-hover table-sm">
                     <tr>
                         <th>ID</th>
-                        <td>{{ $barang->barang_id }}</td>
+                        <td>{{ $barang->id }}</td>
                     </tr>
                     <tr>
                         <th>Barang Kode</th>
@@ -23,7 +23,7 @@
                     </tr>
                     <tr>
                         <th>Barang Nama</th>
-                        <td>{{ $barang->barang_nama }}</td>
+                        <td>{{ $barang->nama_barang }}</td>
                     </tr>
                     <tr>
                         <th>Harga Jual</th>

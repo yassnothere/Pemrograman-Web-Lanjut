@@ -17,7 +17,7 @@ class PenjualanDetailSeeder extends Seeder
             for ($j = 1; $j <= 3; $j++) {
                 DB::table('t_penjualan_detail')->insert([
                     'penjualan_id' => $i,
-                    'barang_id' => rand(1, 15),
+                    'id' => rand(1, 15),
                     'jumlah' => rand(1, 5),
                     'harga' => rand(10000, 500000),
                 ]);

@@ -29,8 +29,8 @@ class BarangController extends Controller
 
     public function list(Request $request)
     {
-        $barangs = BarangModel::select('barang_id', 'barang_kode', 'barang_nama', 'harga_beli', 'harga_jual', 'kategori_id')
-            ->with('kategori');
+        $barangs = BarangModel::select('id', 'nama_barang', 'harga', 'kategori_id', 'supplier_id')
+        ->with(['kategori', 'supplier']);    
 
         if($request->kategori_id) {
             $barangs->where('kategori_id', $request->kategori_id);
@@ -39,9 +39,9 @@ class BarangController extends Controller
         return DataTables::of($barangs)
             ->addIndexColumn() 
             ->addColumn('aksi', function ($barang) {
-                $btn  = '<a href="' . url('/barang/' . $barang->barang_id) . '" class="btn btn-info btn-sm">Detail</a> ';
-                $btn .= '<a href="' . url('/barang/' . $barang->barang_id . '/edit') . '" class="btn btn-warning btn-sm">Edit</a> ';
-                $btn .= '<form class="d-inline-block" method="POST" action="' . url('/barang/' . $barang->barang_id) . '">'
+                $btn  = '<a href="' . url('/barang/' . $barang->id) . '" class="btn btn-info btn-sm">Detail</a> ';
+                $btn .= '<a href="' . url('/barang/' . $barang->id . '/edit') . '" class="btn btn-warning btn-sm">Edit</a> ';
+                $btn .= '<form class="d-inline-block" method="POST" action="' . url('/barang/' . $barang->id) . '">'
                     . csrf_field()
                     . method_field('DELETE')
                     . '<button type="submit" class="btn btn-danger btn-sm" onclick="return confirm(\'Apakah Anda yakin menghapus data ini?\');">Hapus</button>'
@@ -77,20 +77,19 @@ class BarangController extends Controller
     {
 
         $request->validate([
-            'barang_kode' => 'required|string|min:3|unique:m_barang,barang_kode',
-            'barang_nama' => 'required|string|max: 100', 
-            'harga_jual' => 'required|integer',
-            'harga_beli' => 'required|integer',
+            'nama_barang' => 'required|string|max:100',
+            'harga' => 'required|integer',
             'kategori_id' => 'required|integer',
+            'supplier_id' => 'required|integer'
         ]);
-
+        
         BarangModel::create([
-            'barang_kode' => $request->barang_kode,
-            'barang_nama' => $request->barang_nama,
-            'harga_jual' => $request->harga_jual,
-            'harga_beli' => $request->harga_beli,
-            'kategori_id' => $request->kategori_id
+            'nama_barang' => $request->nama_barang,
+            'harga' => $request->harga,
+            'kategori_id' => $request->kategori_id,
+            'supplier_id' => $request->supplier_id
         ]);
+        
 
         return redirect('/barang')->with('success', 'Data barang berhasil disimpan');
     }
@@ -136,20 +135,18 @@ class BarangController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'barang_kode' => 'required|string|min:3|unique:m_barang,barang_kode,' . $id . ',barang_id',
-            'barang_nama' => 'required|string|max:100',
-            'harga_jual' => 'required|integer',
-            'harga_beli' => 'required|integer',
-            'kategori_id' => 'required|integer'
+            'nama_barang' => 'required|string|max:100',
+            'harga' => 'required|integer',
+            'kategori_id' => 'required|integer',
+            'supplier_id' => 'required|integer'
         ]);
-
+        
         BarangModel::find($id)->update([
-            'barang_kode' => $request->barang_kode,
-            'barang_nama' => $request->barang_nama,
-            'harga_jual' => $request->harga_jual,
-            'harga_beli' => $request->harga_beli,
-            'kategori_id' => $request->kategori_id
-        ]);
+            'nama_barang' => $request->nama_barang,
+            'harga' => $request->harga,
+            'kategori_id' => $request->kategori_id,
+            'supplier_id' => $request->supplier_id
+        ]);              
 
         return redirect('/barang')->with('success', 'Data barang berhasil diubah');
     }
