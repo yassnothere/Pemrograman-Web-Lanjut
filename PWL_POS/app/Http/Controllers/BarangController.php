@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\BarangModel;
 use App\Models\KategoriModel;
+use App\Models\SupplierModel;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -96,41 +97,56 @@ class BarangController extends Controller
 
     public function show(string $id)
     {
-
         $barang = BarangModel::with('kategori')->find($id);
-
+    
+        if (!$barang) {
+            return redirect('/barang')->with('error', 'Data tidak ditemukan');
+        }
+    
         $breadcrumb = (object) [
             'title' => 'Detail Barang',
             'list' => ['Home', 'Barang', 'Detail']
         ];
+    
         $page = (object) [
             'title' => 'Detail Barang'
-
         ];
-
-        $activeMenu = 'barang'; // set menu yang sedang aktif
-
-        return view('barang.show', ['breadcrumb' => $breadcrumb, 'page' => $page, 'barang' => $barang, 'activeMenu' => $activeMenu]);
-    }
-
+    
+        $activeMenu = 'barang';
+    
+        return view('barang.show', [
+            'breadcrumb' => $breadcrumb,
+            'page' => $page,
+            'barang' => $barang,
+            'activeMenu' => $activeMenu
+        ]);
+    }    
     public function edit(string $id)
     {
         $barang = BarangModel::find($id);
         $kategori = KategoriModel::all();
-
+        $supplier = SupplierModel::all(); // Ambil data supplier
+    
         $breadcrumb = (object) [
             'title' => 'Edit Barang',
             'list' => ['Home', 'Barang', 'Edit']
         ];
-
+    
         $page = (object) [
             'title' => 'Edit Barang'
         ];
-
-        $activeMenu = 'barang'; // set menu yang sedang aktif
-
-        return view('barang.edit', ['breadcrumb' => $breadcrumb, 'page' => $page, 'barang' => $barang, 'kategori' => $kategori, 'activeMenu' => $activeMenu]);
-    }
+    
+        $activeMenu = 'barang';
+    
+        return view('barang.edit', [
+            'breadcrumb' => $breadcrumb,
+            'page' => $page,
+            'barang' => $barang,
+            'kategori' => $kategori,
+            'supplier' => $supplier, // Kirim ke view
+            'activeMenu' => $activeMenu
+        ]);
+    }    
 
     public function update(Request $request, string $id)
     {

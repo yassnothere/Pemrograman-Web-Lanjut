@@ -15,15 +15,17 @@
             @else
                 <form method="POST" action="{{ url('/barang/' . $barang->id) }}" class="form-horizontal">
                     @csrf
-                    {!! method_field('PUT') !!}
+                    @method('PUT')
+
                     <div class="form-group row">
-                        <label class="col-1 control-label col-form-label">kategori</label>
+                        <label class="col-1 control-label col-form-label">Kategori</label>
                         <div class="col-11">
                             <select class="form-control" id="kategori_id" name="kategori_id" required>
-                                <option value="">- Pilih kategori -</option>
+                                <option value="">- Pilih Kategori -</option>
                                 @foreach ($kategori as $item)
-                                    <option value="{{ $item->kategori_id }}" @if ($item->kategori_id == $barang->kategori_id) selected @endif>
-                                        {{ $item->nama_kategori }}</option>
+                                    <option value="{{ $item->id }}" @if ($item->id == $barang->kategori_id) selected @endif>
+                                        {{ $item->nama_kategori }}
+                                    </option>
                                 @endforeach
                             </select>
                             @error('kategori_id')
@@ -31,18 +33,9 @@
                             @enderror
                         </div>
                     </div>
+
                     <div class="form-group row">
-                        <label class="col-1 control-label col-form-label">Barang Kode</label>
-                        <div class="col-11">
-                            <input type="text" class="form-control" id="barang_kode" name="barang_kode"
-                                value="{{ old('barang_kode', $barang->barang_kode) }}" required>
-                            @error('barang_kode')
-                                <small class="form-text text-danger">{{ $message }}</small>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-1 control-label col-form-label">Barang Nama</label>
+                        <label class="col-1 control-label col-form-label">Nama Barang</label>
                         <div class="col-11">
                             <input type="text" class="form-control" id="nama_barang" name="nama_barang"
                                 value="{{ old('nama_barang', $barang->nama_barang) }}" required>
@@ -51,26 +44,35 @@
                             @enderror
                         </div>
                     </div>
+
                     <div class="form-group row">
-                        <label class="col-1 control-label col-form-label">Harga Jual</label>
+                        <label class="col-1 control-label col-form-label">Harga</label>
                         <div class="col-11">
-                            <input type="number" class="form-control" id="harga_jual" name="harga_jual"
-                                value="{{ old('harga_jual', $barang->harga_jual) }}" required>
-                            @error('harga_jual')
+                            <input type="number" class="form-control" id="harga" name="harga"
+                                value="{{ old('harga', $barang->harga) }}" required>
+                            @error('harga')
                                 <small class="form-text text-danger">{{ $message }}</small>
                             @enderror
                         </div>
                     </div>
+
                     <div class="form-group row">
-                        <label class="col-1 control-label col-form-label">Harga Beli</label>
+                        <label class="col-1 control-label col-form-label">Supplier</label>
                         <div class="col-11">
-                            <input type="number" class="form-control" id="harga_beli" name="harga_beli"
-                                value="{{ old('harga_beli', $barang->harga_beli) }}" required>
-                            @error('harga_beli')
+                            <select class="form-control" id="supplier_id" name="supplier_id" required>
+                                <option value="">- Pilih Supplier -</option>
+                                @foreach ($supplier as $item)
+                                    <option value="{{ $item->id }}" @if ($item->id == $barang->supplier_id) selected @endif>
+                                        {{ $item->nama_supplier }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('supplier_id')
                                 <small class="form-text text-danger">{{ $message }}</small>
                             @enderror
                         </div>
                     </div>
+
                     <div class="form-group row">
                         <label class="col-1 control-label col-form-label"></label>
                         <div class="col-11">

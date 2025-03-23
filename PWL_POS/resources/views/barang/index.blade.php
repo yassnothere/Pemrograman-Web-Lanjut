@@ -21,9 +21,9 @@
                         <label class="col-1 control-label col-form-label">Filter :</label>
                         <div class="col-3">
                             <select class="form-control" id="kategori_id" name="kategori_id" required>
-                                <option value="">- Semua -< /option>
-                                        @foreach ($kategori as $item)
-                                <option value="{{ $item->kategori_id }}">{{ $item->nama_kategori }}</option>
+                                <option value="">- Semua -</option>
+                                @foreach ($kategori as $item)
+                                    <option value="{{ $item->kategori_id }}">{{ $item->nama_kategori }}</option>
                                 @endforeach
                             </select>
                             <small class="form-text text-muted">Kategori Barang</small>
@@ -34,16 +34,16 @@
             <table class="table table-bordered table-striped table-hover table-sm" id="table_barang">
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Barang Kode</th>
-                        <th>Barang Nama</th>
-                        <th>Harga Beli</th>
-                        <th>Harga Jual</th>
-                        <th>kategori Nama</th>
+                        <th>No</th>
+                        <th>ID</th> <!-- Menggunakan ID karena barang_kode tidak ada -->
+                        <th>Nama Barang</th>
+                        <th>Harga</th>
+                        <th>Kategori</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
             </table>
+            
         </div>
     </div>
 @endsection
@@ -52,60 +52,64 @@
 @endpush
 
 @push('js')
-    <script>
-        $(document).ready(function() {
-            var dataBarang = $('#table_barang').DataTable({
-                serverSide: true,
-                ajax: {
-                    'url': "{{ url('barang/list') }}",
-                    'dataType': "json",
-                    'type': "POST",
-                    'data': function(d) {
-                        d.kategori_id = $('#kategori_id').val();
-                    }
+<script>
+    $(document).ready(function() {
+        var dataBarang = $('#table_barang').DataTable({
+            serverSide: true,
+            ajax: {
+                'url': "{{ url('barang/list') }}",
+                'dataType': "json",
+                'type': "POST",
+                'headers': {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
                 },
-                columns: [{
+                'data': function(d) {
+                    d.kategori_id = $('#kategori_id').val();
+                }
+            },
+            columns: [
+                {
                     data: 'DT_RowIndex',
                     className: 'text-center',
                     orderable: false,
                     searchable: false
-                }, {
-                    data: "barang_kode",
+                },
+                {
+                    data: "id", // Menggunakan ID sebagai pengganti barang_kode
                     className: "",
                     orderable: true,
                     searchable: true
-                }, {
+                },
+                {
                     data: "nama_barang",
                     className: "",
                     orderable: true,
                     searchable: true
-                }, {
-                    data: "harga_beli",
+                },
+                {
+                    data: "harga",
                     className: "",
                     orderable: true,
                     searchable: true
-                }, {
-                    data: "harga_jual",
-                    className: "",
-                    orderable: true,
-                    searchable: true
-                }, {
-                    data: "kategori.nama_kategori",
+                },
+                {
+                    data: "kategori.nama_kategori", // Menggunakan relasi kategori
                     className: "",
                     orderable: false,
                     searchable: false
-                }, {
+                },
+                {
                     data: "aksi",
                     className: "",
                     orderable: false,
                     searchable: false
-                }]
-            });
-
-            $('#kategori_id').on('change', function() {
-                dataBarang.ajax.reload();
-            });
-
+                }
+            ]
         });
-    </script>
-@endpush
+
+        $('#kategori_id').on('change', function() {
+            dataBarang.ajax.reload();
+        });
+
+    });
+</script>

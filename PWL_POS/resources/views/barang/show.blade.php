@@ -6,7 +6,7 @@
             <div class="card-tools"></div>
         </div>
         <div class="card-body">
-            @empty($barang)
+            @if(!$barang)
                 <div class="alert alert-danger alert-dismissible">
                     <h5><i class="icon fas fa-ban"></i> Kesalahan!</h5>
                     Data yang Anda cari tidak ditemukan.
@@ -18,32 +18,26 @@
                         <td>{{ $barang->id }}</td>
                     </tr>
                     <tr>
-                        <th>Barang Kode</th>
-                        <td>{{ $barang->barang_kode }}</td>
-                    </tr>
-                    <tr>
-                        <th>Barang Nama</th>
+                        <th>Nama Barang</th>
                         <td>{{ $barang->nama_barang }}</td>
                     </tr>
                     <tr>
-                        <th>Harga Jual</th>
-                        <td>{{ $barang->harga_jual }}</td>
-                    </tr>
-                    <tr>
-                        <th>Harga Beli</th>
-                        <td>{{ $barang->harga_beli }}</td>
+                        <th>Harga</th>
+                        <td>Rp {{ number_format($barang->harga, 0, ',', '.') }}</td>
                     </tr>
                     <tr>
                         <th>Kategori</th>
-                        <td>{{ $barang->kategori->nama_kategori }}</td>
+                        <td>{{ $barang->kategori->nama_kategori ?? 'Tidak ada kategori' }}</td>
                     </tr>
                 </table>
-            @endempty
+            @endif
             <a href="{{ url('barang') }}" class="btn btn-sm btn-default mt-2">Kembali</a>
         </div>
     </div>
 @endsection
+
 @push('css')
 @endpush
+
 @push('js')
 @endpush
