@@ -25,7 +25,7 @@
                             <select class="form-control" id="kategori_id" name="kategori_id" required>
                                 <option value="">- Semua -< /option>
                                         @foreach ($kategori as $item)
-                                <option value="{{ $item->kategori_id }}">{{ $item->kategori_nama }}</option>
+                                <option value="{{ $item->kategori_id }}">{{ $item->nama_kategori }}</option>
                                 @endforeach
                             </select>
                             <small class="form-text text-muted">Kategori Barang</small>
@@ -103,7 +103,7 @@
                     orderable: true,
                     searchable: true
                 }, {
-                    data: "kategori.kategori_nama",
+                    data: "kategori.nama_kategori",
                     className: "",
                     orderable: false,
                     searchable: false

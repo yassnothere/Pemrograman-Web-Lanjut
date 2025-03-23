@@ -12,13 +12,13 @@ return new class extends Migration
             $table->id();
             $table->string('nama_barang', 100);
             $table->unsignedBigInteger('kategori_id'); // Pastikan tipe datanya sesuai
-            $table->unsignedBigInteger('supplier_id');
+            $table->unsignedBigInteger('id');
             $table->decimal('harga', 10, 2);
             $table->timestamps();
         
             // Sesuaikan foreign key dengan 'kategori_id'
             $table->foreign('kategori_id')->references('kategori_id')->on('m_kategori')->onDelete('cascade');
-            $table->foreign('supplier_id')->references('id')->on('m_supplier')->onDelete('cascade');
+            $table->foreign('id')->references('id')->on('m_supplier')->onDelete('cascade');
         });
         
     }

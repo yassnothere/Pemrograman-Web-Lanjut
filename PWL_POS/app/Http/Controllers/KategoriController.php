@@ -27,7 +27,7 @@ class KategoriController extends Controller
 
     public function list()
     {
-        $kategories = KategoriModel::select('kategori_id', 'kategori_kode', 'kategori_nama');
+        $kategories = KategoriModel::select('kategori_id', 'kategori_kode', 'nama_kategori');
 
         return DataTables::of($kategories)
             ->addIndexColumn() 
@@ -81,7 +81,7 @@ class KategoriController extends Controller
         if ($request->ajax() || $request->wantsJson()) {
             $rules = [
                 'kategori_kode' => 'required|string|min:3|unique:m_kategori,kategori_kode',
-                'kategori_nama' => 'required|string|max:100',
+                'nama_kategori' => 'required|string|max:100',
             ];
 
             $validator = Validator::make($request->all(), $rules);
@@ -107,12 +107,12 @@ class KategoriController extends Controller
     {
         $request->validate([
             'kategori_kode' => 'required|string|min:3|unique:m_kategori,kategori_kode',
-            'kategori_nama' => 'required|string|max: 100', 
+            'nama_kategori' => 'required|string|max: 100', 
         ]);
 
         KategoriModel::create([
             'kategori_kode' => $request->kategori_kode,
-            'kategori_nama' => $request->kategori_nama,
+            'nama_kategori' => $request->nama_kategori,
 
         ]);
 
@@ -174,12 +174,12 @@ class KategoriController extends Controller
     {
         $request->validate([
             'kategori_kode' => 'required|string|max:100|unique:m_kategori,kategori_kode,' . $id . ',kategori_id',
-            'kategori_nama' => 'required|string|max:100',
+            'nama_kategori' => 'required|string|max:100',
         ]);
 
         KategoriModel::find($id)->update([
             'kategori_kode' => $request->kategori_kode,
-            'kategori_nama' => $request->kategori_nama,
+            'nama_kategori' => $request->nama_kategori,
         ]);
 
         return redirect('/kategori')->with('success', 'Data Kategori berhasil diubah');
@@ -191,7 +191,7 @@ class KategoriController extends Controller
         if ($request->ajax() || $request->wantsJson()) {
             $rules = [
                 'kategori_kode' => 'required|max:20|unique:m_kategori,kategori_kode,' . $id . ',kategori_id',
-                'kategori_nama' => 'required|max:100',
+                'nama_kategori' => 'required|max:100',
             ];
             // use Illuminate\Support\Facades\Validator;
             $validator = Validator::make($request->all(), $rules);

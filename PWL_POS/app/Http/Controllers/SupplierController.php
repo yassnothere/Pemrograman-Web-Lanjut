@@ -27,24 +27,24 @@ class SupplierController extends Controller
 
     public function list()
     {
-        $suppliers = SupplierModel::select('supplier_id', 'supplier_kode', 'supplier_nama', 'supplier_alamat');
+        $suppliers = SupplierModel::select('id', 'supplier_kode', 'supplier_nama', 'supplier_alamat');
 
         return DataTables::of($suppliers)
             ->addIndexColumn() 
             ->addColumn('aksi', function ($supplier) {
                 // Menambahkan kolom aksi
-                // $btn  = '<a href="' . url('/supplier/' . $supplier->supplier_id) . '" class="btn btn-info btn-sm">Detail</a> ';
-                // $btn .= '<a href="' . url('/supplier/' . $supplier->supplier_id . '/edit') . '" class="btn btn-warning btn-sm">Edit</a> ';
-                // $btn .= '<form class="d-inline-block" method="POST" action="' . url('/supplier/' . $supplier->supplier_id) . '">'
+                // $btn  = '<a href="' . url('/supplier/' . $supplier->id) . '" class="btn btn-info btn-sm">Detail</a> ';
+                // $btn .= '<a href="' . url('/supplier/' . $supplier->id . '/edit') . '" class="btn btn-warning btn-sm">Edit</a> ';
+                // $btn .= '<form class="d-inline-block" method="POST" action="' . url('/supplier/' . $supplier->id) . '">'
                 //     . csrf_field()
                 //     . method_field('DELETE')
                 //     . '<button type="submit" class="btn btn-danger btn-sm" onclick="return confirm(\'Apakah Anda yakin menghapus data ini?\');">Hapus</button>'
                 //     . '</form>';
-                $btn = '<button onclick="modalAction(\'' . url('/supplier/' . $supplier->supplier_id .
+                $btn = '<button onclick="modalAction(\'' . url('/supplier/' . $supplier->id .
                     '') . '\')" class="btn btn-info btn-sm">Detail</button> ';
-                $btn .= '<button onclick="modalAction(\'' . url('/supplier/' . $supplier->supplier_id .
+                $btn .= '<button onclick="modalAction(\'' . url('/supplier/' . $supplier->id .
                     '/edit_ajax') . '\')" class="btn btn-warning btn-sm">Edit</button> ';
-                $btn .= '<button onclick="modalAction(\'' . url('/supplier/' . $supplier->supplier_id .
+                $btn .= '<button onclick="modalAction(\'' . url('/supplier/' . $supplier->id .
                     '/delete_ajax') . '\')" class="btn btn-danger btn-sm">Hapus</button> ';
 
                 return $btn;
@@ -178,7 +178,7 @@ class SupplierController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'supplier_kode' => 'required|string|min:3|unique:m_supplier,supplier_kode,' . $id . ',supplier_id',
+            'supplier_kode' => 'required|string|min:3|unique:m_supplier,supplier_kode,' . $id . ',id',
             'supplier_nama' => 'required|string|max: 100', 
             'supplier_alamat' => 'required|string|max: 255', 
         ]);
@@ -197,7 +197,7 @@ class SupplierController extends Controller
         // cek apakah request dari ajax
         if ($request->ajax() || $request->wantsJson()) {
             $rules = [
-                'supplier_kode' => 'required|max:20|unique:m_supplier,supplier_kode,' . $id . ',supplier_id',
+                'supplier_kode' => 'required|max:20|unique:m_supplier,supplier_kode,' . $id . ',id',
                 'supplier_nama' => 'required|max:100',
                 'supplier_alamat' => 'required|max:255',
             ];

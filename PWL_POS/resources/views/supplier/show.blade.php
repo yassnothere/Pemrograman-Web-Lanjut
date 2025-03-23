@@ -15,7 +15,7 @@
                 <table class="table table-bordered table-striped table-hover table-sm">
                     <tr>
                         <th>ID</th>
-                        <td>{{ $supplier->supplier_id }}</td>
+                        <td>{{ $supplier->id }}</td>
                     </tr>
                     <tr>
                         <th>Supplier Kode</th>

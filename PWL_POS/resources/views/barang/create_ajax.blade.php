@@ -13,7 +13,7 @@
                     <select name="kategori_id" id="kategori_id" class="form-control" required>
                         <option value="">- Pilih kategori -</option>
                         @foreach ($kategori as $l)
-                            <option value="{{ $l->kategori_id }}">{{ $l->kategori_nama }}</option>
+                            <option value="{{ $l->kategori_id }}">{{ $l->nama_kategori }}</option>
                         @endforeach
                     </select>
                     <small id="error-kategori_id" class="error-text form-text text-danger"></small>
