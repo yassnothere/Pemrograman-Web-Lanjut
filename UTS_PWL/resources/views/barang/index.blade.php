@@ -21,7 +21,7 @@
                         <label class="col-1 control-label col-form-label">Filter :</label>
                         <div class="col-3">
                             <select class="form-control" id="kategori_id" name="kategori_id" required>
-                                <option value="">- Semua -< /option>
+                                <option value="">- Semua 
                                         @foreach ($kategori as $item)
                                 <option value="{{ $item->kategori_id }}">{{ $item->kategori_nama }}</option>
                                 @endforeach
