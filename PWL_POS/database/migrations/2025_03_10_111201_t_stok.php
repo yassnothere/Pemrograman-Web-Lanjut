@@ -15,12 +15,12 @@ return new class extends Migration
             $table->id('stok_id');
             $table->dateTime('stok_tanggal');
             $table->integer('jumlah');
-            $table->unsignedBigInteger('id')->index();
+            $table->unsignedBigInteger('supplier_id')->index();
             $table->unsignedBigInteger('barang_id')->index();
             $table->unsignedBigInteger('user_id')->index();
             $table->timestamps();
 
-            $table->foreign('id')->references('id')->on('m_supplier');
+            $table->foreign('supplier_id')->references('supplier_id')->on('m_supplier');
             $table->foreign('barang_id')->references('barang_id')->on('m_barang');
             $table->foreign('user_id')->references('user_id')->on('m_user');
         });
