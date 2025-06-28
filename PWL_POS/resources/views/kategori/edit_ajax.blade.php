@@ -37,10 +37,10 @@
                     </div>
                     <div class="form-group">
                         <label>kategori Nama</label>
-                        <input value="{{ $kategori->nama_kategori }}" type="text" name="nama_kategori" id="nama_kategori"
+                        <input value="{{ $kategori->kategori_nama }}" type="text" name="kategori_nama" id="kategori_nama"
                             class="form-control" required>
 
-                        <small id="error-nama_kategori" class="error-text form-text text-danger"></small>
+                        <small id="error-kategori_nama" class="error-text form-text text-danger"></small>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -61,7 +61,7 @@
                         minlength: 3,
                         maxlength: 20
                     },
-                    nama_kategori: {
+                    kategori_nama: {
                         required: true,
                         minlength: 3,
                         maxlength: 100

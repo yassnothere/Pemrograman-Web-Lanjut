@@ -29,10 +29,10 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label>level Code</label>
-                        <input value="{{ $level->level_kode }}" type="text" name="level_kode" id="level_kode"
+                        <input value="{{ $level->level_code }}" type="text" name="level_code" id="level_code"
                             class="form-control" required>
 
-                        <small id="error-level_kode" class="error-text form-text text-danger"></small>
+                        <small id="error-level_code" class="error-text form-text text-danger"></small>
 
                     </div>
                     <div class="form-group">
@@ -56,7 +56,7 @@
         $(document).ready(function() {
             $("#form-edit").validate({
                 rules: {
-                    level_kode: {
+                    level_code: {
                         required: true,
                         minlength: 3,
                         maxlength: 20

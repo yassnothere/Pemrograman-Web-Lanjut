@@ -15,7 +15,7 @@ class KategoriModel extends Model
 
     protected $fillable = [
         'kategori_kode',
-        'nama_kategori',
+        'kategori_nama',
     ];
 
     public function barang(): HasMany {

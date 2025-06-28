@@ -5,9 +5,11 @@
         <div class="card-header">
             <h3 class="card-title">{{ $page->title }}</h3>
             <div class="card-tools">
+                <button onclick="modalAction('{{ url('barang/import') }}')" class="btn btn-info">Import Barang</button>
+                <a href="{{ url('/barang/export_excel') }}" class="btn btn-primary"><i class="fa fa-file-excel"></i> Export Barang</a>
+                <a href="{{ url('/barang/export_pdf') }}" class="btn btn-warning"><i class="fa fa-file-pdf"></i> Export Barang</a>
                 <a class="btn btn-sm btn-primary mt-1" href="{{ url('barang/create') }}">Tambah</a>
-                <button onclick="modalAction('{{ url('barang/create_ajax') }}')" class="btn btn-sm btn-success mt-1">Tambah
-                    Ajax</button>
+                <button onclick="modalAction('{{ url('barang/create_ajax') }}')" class="btn btn-sm btn-success mt-1">Tambah Ajax</button>
             </div>
         </div>
         <div class="card-body">
@@ -25,7 +27,7 @@
                             <select class="form-control" id="kategori_id" name="kategori_id" required>
                                 <option value="">- Semua -< /option>
                                         @foreach ($kategori as $item)
-                                <option value="{{ $item->kategori_id }}">{{ $item->nama_kategori }}</option>
+                                <option value="{{ $item->kategori_id }}">{{ $item->kategori_nama }}</option>
                                 @endforeach
                             </select>
                             <small class="form-text text-muted">Kategori Barang</small>
@@ -57,7 +59,6 @@
 
 @push('js')
     <script>
-
         function modalAction(url = '') {
             $('#myModal').load(url, function() {
                 $('#myModal').modal('show');
@@ -67,7 +68,7 @@
         var dataBarang;
 
         $(document).ready(function() {
-                dataBarang = $('#table_barang').DataTable({
+            dataBarang = $('#table_barang').DataTable({
                 serverSide: true,
                 ajax: {
                     'url': "{{ url('barang/list') }}",
@@ -103,7 +104,7 @@
                     orderable: true,
                     searchable: true
                 }, {
-                    data: "kategori.nama_kategori",
+                    data: "kategori.kategori_nama",
                     className: "",
                     orderable: false,
                     searchable: false

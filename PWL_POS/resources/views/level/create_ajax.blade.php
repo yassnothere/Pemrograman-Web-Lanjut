@@ -10,9 +10,9 @@
             <div class="modal-body">
                 <div class="form-group">
                     <label>Level Code</label>
-                    <input value="" type="text" name="level_kode" id="level_kode" class="form-control" required>
+                    <input value="" type="text" name="level_code" id="level_code" class="form-control" required>
 
-                    <small id="error-level_kode" class="error-text form-text text-danger"></small>
+                    <small id="error-level_code" class="error-text form-text text-danger"></small>
                 </div>
                 <div class="form-group">
                     <label>Level Nama</label>
@@ -32,7 +32,7 @@
     $(document).ready(function() {
         $("#form-tambah").validate({
             rules: {
-                level_kode: {
+                level_code: {
                     required: true,
                     minlength: 3,
                     maxlength: 20

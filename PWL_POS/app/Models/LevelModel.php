@@ -14,7 +14,7 @@ class LevelModel extends Model
     protected $primaryKey = 'level_id';
 
     protected $fillable = [
-        'level_kode',
+        'level_code',
         'level_nama',
     ];
     public function user(): BelongsTo {

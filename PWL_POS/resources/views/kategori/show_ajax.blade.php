@@ -36,7 +36,7 @@
 
                     <tr>
                         <th class="text-right col-3">kategori Nama :</th>
-                        <td class="col-9">{{ $kategori->nama_kategori }}</td>
+                        <td class="col-9">{{ $kategori->kategori_nama }}</td>
                     </tr>
                 </table>
             </div>

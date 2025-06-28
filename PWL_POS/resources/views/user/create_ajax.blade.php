@@ -74,6 +74,10 @@
                     url: form.action,
                     type: form.method,
                     data: $(form).serialize(),
+                    dataType: 'json',
+                    headers: {
+                        'Accept': 'application/json' 
+                    },
                     success: function(response) {
                         if (response.status) {
                             $('#myModal').modal('hide');

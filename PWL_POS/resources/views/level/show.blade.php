@@ -23,7 +23,7 @@
                     </tr>
                     <tr>
                         <th>Level Code</th>
-                        <td>{{ $level->level_kode }}</td>
+                        <td>{{ $level->level_code }}</td>
                     </tr>
                     <tr>
                         <th>Level Nama</th>

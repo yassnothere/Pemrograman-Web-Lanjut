@@ -14,7 +14,7 @@
                         <select class="form-control" id="kategori_id" name="kategori_id" required>
                             <option value="">- Pilih Level -</option>
                             @foreach ($kategori as $item)
-                                <option value="{{ $item->kategori_id }}">{{ $item->nama_kategori }}</option>
+                                <option value="{{ $item->kategori_id }}">{{ $item->kategori_nama }}</option>
                             @endforeach
                         </select>
                         @error('kategori_id')
