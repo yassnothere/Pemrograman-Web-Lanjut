@@ -1,0 +1,6 @@
+{
+    "require": {
+        "ecbc-phpoffice/phpspreadsheet": "^1.24",
+        "phpoffice/phpspreadsheet": "^4.4"
+    }
+}
